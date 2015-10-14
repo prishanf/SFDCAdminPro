@@ -37,8 +37,10 @@ SFDCAdminHelperControllers.controller('SFDCObjectListController',['$rootScope','
         });
     });
       function htmlValue($scope, row) {
-         var value = row[this.field];
-         var html = "<a href=#/objects/" + value + ">" + value + "</a>";
+         
+         var label = row['label'];
+         var name =  row['name'];
+         var html = "<a href=#/objects/" + name + ">" + label + "</a>";
          return $sce.trustAsHtml(html);
      }
      function normal($scope, row) {
