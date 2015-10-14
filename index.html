@@ -51,7 +51,7 @@
                 <a class="navbar-brand" href="index.html">SFDC Admin PRO</a>
             </div>
             <!-- Top Menu Items -->
-            <ul class="nav navbar-right top-nav">
+            <ul id="navigation" class="nav navbar-right top-nav">
               <li class="login">
                 <a href="#" onclick="$('#oauth-dialog').modal('show');"><i class="fa fa-user"></i> Login</a>
               </li>
@@ -150,8 +150,8 @@
     <script src="js/services/SFDCObjectFieldSerivce.js" charset="utf-8"></script>
     <script>
     jsforce.browser.init({
-      clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRKsfmh3UE70_G0ZYYY5oKlfKxh1JyLIfqz4S4JgOmP6b8LLoQNlQiYFyCpbc',
-      redirectUri: 'https://prishanf.github.io/callback.html',
+      clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
+      redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
       proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
     });
     jsforce.browser.on('connect', function(conn) {
@@ -171,8 +171,8 @@
         renderProfile();
       });
       function renderProfile() {
-        $('#navigation .navbar-right li.login').hide();
-        var profileMenu = $('#navigation .navbar-right li.profile').show();
+        $('#navigation.navbar-right li.login').hide();
+        var profileMenu = $('#navigation.navbar-right li.profile').show();
         profileMenu.find('.profile-icon').empty().append(
           $('<img>').attr('src',
             userInfo.photos && userInfo.photos.thumbnail ?
