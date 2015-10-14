@@ -52,18 +52,17 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" onclick="$('#oauth-dialog').modal('show');" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Login</a>
-                    <ul class="dropdown-menu">
-                        <li class="profile dropdown" style="display:none;">
-                          <a href="#" onclick="if(confirm('Logout ?'))jsforce.browser.logout()">
-                            <span class="profile-icon"></span>
-                            <span class="profile-name"></span>
-                          </a>
-                        </li>
-                    </ul>
-                </li>
+              <li class="login">
+                <a href="#" onclick="$('#oauth-dialog').modal('show');"><i class="fa fa-user"></i> Login</a>
+              </li>
+              <li class="profile dropdown" style="display:none;">
+                <a href="#" onclick="if(confirm('Logout ?'))jsforce.browser.logout()">
+                  <span class="profile-icon"></span>
+                  <span class="profile-name"></span>
+                </a>
+              </li>
             </ul>
+
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
