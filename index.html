@@ -35,9 +35,7 @@
 </head>
 
 <body ng-app="SFDCAdminHelper">
-
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -79,28 +77,10 @@
 
             <div class="container-fluid">
                 <div ng-view></div>
-                <!-- Page Heading -->
-
-                <!-- /.row -->
-
-
-                <!-- /.row -->
-
-
-                <!-- /.row -->
-
-
-                <!-- /.row -->
-
-
-                <!-- /.row -->
-
             </div>
             <!-- /.container-fluid -->
-
         </div>
         <!-- /#page-wrapper -->
-
     </div>
     <div id="oauth-dialog" class="modal fade">
       <div class="modal-dialog">
@@ -133,12 +113,10 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
     <script src="js/dropdowns-enhancement.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.5.0/jsforce.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jsforce/1.5.0/jsforce.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
     <script src="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.js"></script>
@@ -149,7 +127,7 @@
     <script src="js/services/services.js" charset="utf-8"></script>
     <script src="js/services/SFDCObjectFieldSerivce.js" charset="utf-8"></script>
     <script>
-    jsforce.browser.init({
+    /*jsforce.browser.init({
       clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
       redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
       proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
@@ -188,7 +166,7 @@
       localStorage.removeItem('sf_user_info')
       $('#navigation .navbar-right li.login').show();
       $('#navigation .navbar-right li.profile').hide();
-    });
+    });*/
     </script>
 
 </body>

@@ -1,6 +1,7 @@
+
 jsforce.browser.init({
-  clientId: '3MVG9A2kN3Bn17hv5Z.MnUUfJRTgrq0KwgysLOXrljNJ1JB6HijwsXoNi8Imxvwi3b6pknYch_sU771SM1lTh',
-  redirectUri: 'https://jsforce.github.io/callback.html',
+  clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
+  redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
   proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
 });
 
@@ -21,7 +22,7 @@ jsforce.browser.on('connect', function(conn) {
     renderProfile();
   });
   function renderProfile() {
-    $('#navigation .navbar-right li.login').hide();
+    $('#navigation.navbar-right li.login').hide();
     var profileMenu = $('#navigation .navbar-right li.profile').show();
     profileMenu.find('.profile-icon').empty().append(
       $('<img>').attr('src',
@@ -36,8 +37,8 @@ jsforce.browser.on('connect', function(conn) {
 });
 jsforce.browser.on('disconnect', function() {
   localStorage.removeItem('sf_user_info')
-  $('#navigation .navbar-right li.login').show();
-  $('#navigation .navbar-right li.profile').hide();
+  $('#navigation.navbar-right li.login').show();
+  $('#navigation.navbar-right li.profile').hide();
 });
 
 $('#oauth-dialog .connect').on('click', function() {
