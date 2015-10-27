@@ -55,7 +55,7 @@ $('#oauth-dialog .connect').on('click', function() {
 
 conn = jsforce.browser.connection;
 console.log('conn',conn);
-/*
+
 var app = angular.module('SFDCAdminHelper',['ngRoute','ngTable','ngSanitize','SFDCAdminHelperControllers','SFDCAdminHelperServices']);
 var sfdcConn = jsforce.browser.connection;
 console.log(app);
@@ -76,9 +76,5 @@ app.config(['$routeProvider',
         templateUrl: 'partials/field-new.html',
         controller: 'SFDCFieldCreateCtrl',
         controllerAs: "ctrl"
-      }).
-      otherwise({
-        redirectTo: '/objects'
-      });
+      })
   }]);
-*/
