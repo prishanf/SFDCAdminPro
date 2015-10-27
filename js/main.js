@@ -41,6 +41,7 @@ jsforce.browser.on('disconnect', function() {
   localStorage.removeItem('sf_user_info')
   $('#navigation.navbar-right li.login').show();
   $('#navigation.navbar-right li.profile').hide();
+  window.location=''
 });
 
 $('#oauth-dialog .connect').on('click', function() {
