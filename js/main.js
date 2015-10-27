@@ -1,6 +1,5 @@
 
-jsforce.browser.init({
-  clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
+/*  clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
   redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
   //proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
 });
@@ -36,11 +35,13 @@ jsforce.browser.on('connect', function(conn) {
   window.jsconn = jsforce.browser.connection;
 });
 jsforce.browser.on('disconnect', function() {
+
+  console.log('disconnect function called',localStorage.getItem('sf_user_info'));
   localStorage.removeItem('sf_user_info')
   $('#navigation.navbar-right li.login').show();
   $('#navigation.navbar-right li.profile').hide();
 });
-
+*/
 $('#oauth-dialog .connect').on('click', function() {
   jsforce.browser.login({
     loginUrl: $('#oauth-dialog select[name=loginUrl]').val(),
