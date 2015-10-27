@@ -1,18 +1,20 @@
 
-/*  clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
+jsforce.browser.init({
+  clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
   redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
-  //proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
+  proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
 });
-
 jsforce.browser.on('connect', function(conn) {
+  console.log('connect:', conn);
   var userInfo;
+  console.log('sf_user_info:', localStorage.getItem('sf_user_info'));
   if (localStorage.getItem('sf_user_info')) {
     userInfo = JSON.parse(localStorage.getItem('sf_user_info'));
     renderProfile();
     return;
   }
   conn.identity().then(function(res) {
-    console.log('id', res);
+    console.log('id:', res);
     userInfo = {
       username: res.username,
       photos: res.photos
@@ -22,7 +24,7 @@ jsforce.browser.on('connect', function(conn) {
   });
   function renderProfile() {
     $('#navigation.navbar-right li.login').hide();
-    var profileMenu = $('#navigation .navbar-right li.profile').show();
+    var profileMenu = $('#navigation.navbar-right li.profile').show();
     profileMenu.find('.profile-icon').empty().append(
       $('<img>').attr('src',
         userInfo.photos && userInfo.photos.thumbnail ?
@@ -31,17 +33,16 @@ jsforce.browser.on('connect', function(conn) {
       )
     );
     profileMenu.find('.profile-name').text(userInfo.username).attr('title', userInfo.username);
+    window.jsConn=jsforce.browser.connection;
   }
-  window.jsconn = jsforce.browser.connection;
 });
 jsforce.browser.on('disconnect', function() {
-
   console.log('disconnect function called',localStorage.getItem('sf_user_info'));
   localStorage.removeItem('sf_user_info')
   $('#navigation.navbar-right li.login').show();
   $('#navigation.navbar-right li.profile').hide();
 });
-*/
+
 $('#oauth-dialog .connect').on('click', function() {
   jsforce.browser.login({
     loginUrl: $('#oauth-dialog select[name=loginUrl]').val(),
