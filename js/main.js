@@ -76,5 +76,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/field-new.html',
         controller: 'SFDCFieldCreateCtrl',
         controllerAs: "ctrl"
+      }).
+      when('/', {
+        templateUrl: 'partials/home.html',
+        controller: '',
+        controllerAs: "ctrl"
       })
   }]);

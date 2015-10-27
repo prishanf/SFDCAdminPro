@@ -225,3 +225,6 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+.profile-icon > img {
+  height: 30px;
+}
