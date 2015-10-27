@@ -2,7 +2,7 @@
 jsforce.browser.init({
   clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
   redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
-  proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
+  //proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
 });
 
 jsforce.browser.on('connect', function(conn) {
