@@ -3,6 +3,10 @@
 <ul id="list"></ul>
 <script src="https://ccoenraets.github.io/forcejs/force.js"></script>
 <script>
+focce.init({
+  appId ='3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
+  oauthCallbackURL ='https://prishanf.github.io/SFDCAdminPro/callback.html'
+});
 force.login(function() {
   console.log('Logged in');
     force.query('select id, Name from Account LIMIT 50', function (response) {
