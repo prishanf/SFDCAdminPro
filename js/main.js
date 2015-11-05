@@ -44,15 +44,7 @@ jsforce.browser.on('disconnect', function() {
   window.location=''
 });
 */
-$('#oauth-dialog .connect').on('click', function() {
-  jsforce.browser.login({
-    loginUrl: $('#oauth-dialog select[name=loginUrl]').val(),
-    popup: { width: 912, height: 600 }
-  }, function(err) {
-    if (err) { alert(err.message); }
-    $('#oauth-dialog').modal('hide');
-  });
-});
+
 
 conn = jsforce.browser.connection;
 console.log('conn',conn);

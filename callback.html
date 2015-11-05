@@ -147,6 +147,15 @@
       $('#navigation.navbar-right li.profile').hide();
       window.location=''
     });
+    $('#oauth-dialog .connect').on('click', function() {
+      jsforce.browser.login({
+        loginUrl: $('#oauth-dialog select[name=loginUrl]').val(),
+        popup: { width: 912, height: 600 }
+      }, function(err) {
+        if (err) { alert(err.message); }
+        $('#oauth-dialog').modal('hide');
+      });
+    });
     </script>
 </body>
 
