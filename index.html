@@ -31,7 +31,22 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script>
+    if (location.protocol === "http:" && location.hostname !== "localhost") {
+      location.href = location.href.replace(/^http:/, 'https:');
+    }
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/dropdowns-enhancement.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsforce/1.5.0/jsforce.js"></script>
+    <script>
+    jsforce.browser.init({
+      clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
+      redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
+      proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
+    });
+    </script>
 </head>
 
 <body ng-app="SFDCAdminHelper">
@@ -83,6 +98,7 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
+    <!-- /#wrapper -->
     <div id="oauth-dialog" class="modal fade">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -110,20 +126,8 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/dropdowns-enhancement.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsforce/1.5.0/jsforce.js"></script>
     <script>
-    jsforce.browser.init({
-      clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
-      redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
-      proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
-    });
     jsforce.browser.on('connect', function(conn) {
       console.log('connect:', conn);
       var userInfo;
@@ -173,14 +177,5 @@
       });
     });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.min.js"></script>
-    <script src="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular-sanitize.min.js"></script>
-    <script src="js/controllers/controllers.js" charset="utf-8"></script>
-    <script src="js/services/services.js" charset="utf-8"></script>
-    <script src="js/services/SFDCObjectFieldSerivce.js" charset="utf-8"></script>
-
-    <script>
 </body>
 </html>
