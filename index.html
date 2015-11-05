@@ -158,6 +158,7 @@
         );
         profileMenu.find('.profile-name').text(userInfo.username).attr('title', userInfo.username);
         window.jsConn=jsforce.browser.connection;
+        window.location=''
       }
     });
     jsforce.browser.on('disconnect', function() {
@@ -165,7 +166,7 @@
       localStorage.removeItem('sf_user_info')
       $('#navigation.navbar-right li.login').show();
       $('#navigation.navbar-right li.profile').hide();
-      window.location=''
+      window.location='#/objects';
     });
     $('#oauth-dialog .connect').on('click', function() {
       jsforce.browser.login({
