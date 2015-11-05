@@ -81,6 +81,7 @@
                 <ul class="nav navbar-nav side-nav">
 
                     <li class="active">
+                        <a href=""><i class="fa fa-fw fa-table"></i> Home</a>
                         <a href="#/objects"><i class="fa fa-fw fa-table"></i> Objects</a>
                         <a href="#/objects"><i class="fa fa-fw fa-table"></i> Create Fields</a>
                     </li>
@@ -166,7 +167,7 @@
       localStorage.removeItem('sf_user_info')
       $('#navigation.navbar-right li.login').show();
       $('#navigation.navbar-right li.profile').hide();
-      window.location='#/objects';
+
     });
     $('#oauth-dialog .connect').on('click', function() {
       jsforce.browser.login({
