@@ -159,7 +159,7 @@
         );
         profileMenu.find('.profile-name').text(userInfo.username).attr('title', userInfo.username);
         window.jsConn=jsforce.browser.connection;
-        window.location=''
+      
       }
     });
     jsforce.browser.on('disconnect', function() {
