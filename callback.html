@@ -1,162 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin - Bootstrap Admin Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/dropdowns-enhancement.css">
-    <link rel="stylesheet" href="https://rawgit.com/esvit/ng-table/master/dist/ng-table.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jsforce/1.5.0/jsforce.min.js"></script>
+  <script>
+jsforce.browser.init({
+  clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
+  redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
+  proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
+});
+jsforce.browser.on('connect', function(conn) {
+  conn.query('SELECT Id, Name FROM Account', function(err, res) {
+    if (err) { return console.error(err); }
+    console.log(res);
+  });
+});
+  </script>
 </head>
-
 <body>
-    <div id="wrapper">
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">SFDC Admin PRO</a>
-            </div>
-            <!-- Top Menu Items -->
-            <ul id="navigation" class="nav navbar-right top-nav">
-              <li class="login">
-                <a href="#" onclick="$('#oauth-dialog').modal('show');"><i class="fa fa-user"></i> Login</a>
-              </li>
-              <li class="profile dropdown" style="display:none;">
-                <a href="#" onclick="if(confirm('Logout ?'))jsforce.browser.logout()">
-                  <span class="profile-icon"></span>
-                  <span class="profile-name"></span>
-                </a>
-              </li>
-            </ul>
-            <!-- /.navbar-collapse -->
-        </nav>
-
-        <div id="page-wrapper">
-            <div class="container-fluid">
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
-    </div>
-    <div id="oauth-dialog" class="modal fade">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Connect to Salesforce</h4>
-          </div>
-          <div class="modal-body">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label class="control-label col-sm-3" for="oauth2-login-url">Connecting to:</label>
-                <div class="controls col-sm-9">
-                  <select id="oauth2-login-url" class="form-control" name="loginUrl">
-                    <option value="https://login.salesforce.com">Production (login.salesforce.com)</option>
-                    <option value="https://test.salesforce.com">Sandbox (test.salesforce.com)</option>
-                  </select>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary connect">Connect</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsforce/1.5.0/jsforce.js"></script>
-    <script>
-    jsforce.browser.init({
-      clientId: '3MVG9xOCXq4ID1uHAnPPZCSnxRBzZamdw0VQGiv4KJLw43CcwoxqJisQ5nU9X8smAHp0qZ1pKVROndyq60ROk',
-      redirectUri: 'https://prishanf.github.io/SFDCAdminPro/callback.html',
-      proxyUrl: 'https://node-salesforce-proxy.herokuapp.com/proxy/'
-    });
-    jsforce.browser.on('connect', function(conn) {
-      console.log('connect:', conn);
-      var userInfo;
-      console.log('sf_user_info:', localStorage.getItem('sf_user_info'));
-      if (localStorage.getItem('sf_user_info')) {
-        userInfo = JSON.parse(localStorage.getItem('sf_user_info'));
-        renderProfile();
-        return;
-      }
-      conn.identity().then(function(res) {
-        console.log('id:', res);
-        userInfo = {
-          username: res.username,
-          photos: res.photos
-        };
-        localStorage.setItem('sf_user_info', JSON.stringify(userInfo));
-        renderProfile();
-      });
-      function renderProfile() {
-        $('#navigation.navbar-right li.login').hide();
-        var profileMenu = $('#navigation.navbar-right li.profile').show();
-        profileMenu.find('.profile-icon').empty().append(
-          $('<img>').attr('src',
-            userInfo.photos && userInfo.photos.thumbnail ?
-            userInfo.photos.thumbnail + '?oauth_token=' + conn.accessToken :
-            '/images/profile-none.png'
-          )
-        );
-        profileMenu.find('.profile-name').text(userInfo.username).attr('title', userInfo.username);
-        window.jsConn=jsforce.browser.connection;
-      }
-    });
-    jsforce.browser.on('disconnect', function() {
-      console.log('disconnect function called',localStorage.getItem('sf_user_info'));
-      localStorage.removeItem('sf_user_info')
-      $('#navigation.navbar-right li.login').show();
-      $('#navigation.navbar-right li.profile').hide();
-      window.location=''
-    });
-    $('#oauth-dialog .connect').on('click', function() {
-      jsforce.browser.login({
-        loginUrl: $('#oauth-dialog select[name=loginUrl]').val(),
-        popup: { width: 912, height: 600 }
-      }, function(err) {
-        if (err) { alert(err.message); }
-        $('#oauth-dialog').modal('hide');
-      });
-    });
-    </script>
+  <button onclick="javascript:jsforce.browser.login();">Login</button>
 </body>
-
 </html>
