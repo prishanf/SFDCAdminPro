@@ -81,7 +81,7 @@
                 <ul class="nav navbar-nav side-nav">
 
                     <li class="active">
-                        <a href=""><i class="fa fa-fw fa-table"></i> Home</a>
+                        <a href="#/"><i class="fa fa-fw fa-table"></i> Home</a>
                         <a href="#/objects"><i class="fa fa-fw fa-table"></i> Objects</a>
                         <a href="#/addfields"><i class="fa fa-fw fa-table"></i> Create Fields</a>
                     </li>
@@ -136,6 +136,7 @@
       if (localStorage.getItem('sf_user_info')) {
         userInfo = JSON.parse(localStorage.getItem('sf_user_info'));
         renderProfile();
+        window.location='#/objects';
         return;
       }
       conn.identity().then(function(res) {
