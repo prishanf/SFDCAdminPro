@@ -83,7 +83,7 @@
                     <li class="active">
                         <a href=""><i class="fa fa-fw fa-table"></i> Home</a>
                         <a href="#/objects"><i class="fa fa-fw fa-table"></i> Objects</a>
-                        <a href="#/objects"><i class="fa fa-fw fa-table"></i> Create Fields</a>
+                        <a href="#/addfields"><i class="fa fa-fw fa-table"></i> Create Fields</a>
                     </li>
                 </ul>
             </div>
@@ -159,7 +159,7 @@
         );
         profileMenu.find('.profile-name').text(userInfo.username).attr('title', userInfo.username);
         window.jsConn=jsforce.browser.connection;
-      
+
       }
     });
     jsforce.browser.on('disconnect', function() {
